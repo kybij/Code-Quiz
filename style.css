@@ -82,3 +82,18 @@ body {
 .hide {
     display: none;
 }
+#questions {
+    font-size: 45px;
+    color: white;
+    display: flex;
+    justify-content: center;
+
+    
+}
+.choice {
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.74);
+    display: flex;
+    justify-content: space-between;
+    
+}

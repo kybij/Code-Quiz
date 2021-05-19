@@ -1,51 +1,45 @@
 var playEl = document.querySelector(".play");
 var timerEl = document.querySelector("#countdown")
 var scoreEl = document.querySelector(".score");
-var questionEl = document.getElementById("questions")
-var quizEl = document.getElementById("quiz")
+var questionEl = document.getElementById("questions");
+var quizEl = document.getElementById("quiz");
+var choiceA = document.getElementById ("A");
+var choiceB = document.getElementById ("B");
+var choiceC = document.getElementById ("C");
+var progress =document.getElementById ("progress")
 var myQuestions = [{
-    question: "Who created JavaScript?",
-    answers: {
-        a: "Brendan Eich",
-        b: "Sheryl Sandberg",
-        c: "Douglas Crockford"
+    questions: "Who created JavaScript?",
+         choiceA: "Brendan Eich",
+        choiceB: "Sheryl Sandberg",
+        choiceC: "Douglas Crockford",
+        correctAnswer: "a"
     },
-    correctAnswer: "a"
+{
+    questions: "What year was HTML invented?",
+        choiceA: "1993",
+        choiceB: "1994",
+        choiceC: "1995",
+        correctAnswer: "a"
+    },
+{
+    questions: "What function converts a string and returns an integer?",
+        choiceA: "appendChild",
+        choiceB: "parseInt",
+        choiceC: "setAttribute",
+        correctAnswer: "b"
+    },
+{
+    questions: "What is the Event Handler?",
+        choiceA: "The user behavior",
+        choiceB: "Observation of the event",
+        choiceC: "Response of the event",
+        correctAnswer: "c"
 },
 {
-    question: "What year was HTML invented?",
-    answers: {
-        a: "1993",
-        b: "1994",
-        c: "1995"
-    },
-    correctAnswer: "a"
-},
-{
-    question: "What function converts a string and returns an integer?",
-    answers: {
-        a: "appendChild",
-        b: "parseInt",
-        c: "setAttribute"
-    },
-    correctAnswer: "b"
-},
-{
-    question: "What is the Event Handler?",
-    answers: {
-        a: "The user behavior",
-        b: "Observation of the event",
-        c: "Response of the event"
-    },
-    correctAnswer: "c"
-},
-{
-    question: "In the for loop what is the increment expression",
-    answers: {
-        a: "var i = 0",
-        b: "i < 3",
-        c: "i++"
-    },
+    questions: "In the for loop what is the increment expression",
+        choiceA: "var i = 0",
+        choiceB: "i < 3",
+        choiceC: "i++",
     correctAnswer: "c"
 }
 ];
@@ -61,7 +55,7 @@ var myQuestions = [{
             timerEl.textContent = timeLeft + "seconds remaining";
             timeLeft--;
         } else {
-            timeEl.textContent = "";
+            timerEl.textContent = "";
             clearInterval(timeInterval);
             return;
         }
@@ -76,13 +70,27 @@ var playGame = function () {
 };
 
 var getQuestions = function () {
-   
+    var q = myQuestions[0];
 
-    
+  questions.innerHTML = "<h3>" + q.questions + "</h3>";
+  choiceA.innerHTML = q.choiceA;
+  choiceB.innerHTML = q.choiceB;
+  choiceC.innerHTML = q.choiceC;
+
 };
+
+var getProgress = function () {
+    for(let qIndex = 0; qIndex <= questions.length -1; qIndex++ ){
+        progress.innerHTML += "div class= 'prog' id=" + qIndex +"></div>";
+    }
+}
+
+
+
 
 playEl.onclick = playGame
 scoreEl.addEventListener("click", function () {
     alert("button clicked");
 });
 playEl.addEventListener("click",playGame)
+
