@@ -39,6 +39,8 @@ body {
     font-size: 32px;
     background: rgb(224, 9, 9);
     border-radius: 5px;
+    border-color: black;
+    border-width: 3px;
 }
 
 #btn:hover {
@@ -75,4 +77,8 @@ body {
 .fa-crown {
     font-size: 25px;
     margin-left: 10px;
+}
+
+.hide {
+    display: none;
 }
