@@ -33,47 +33,51 @@ body {
     flex-direction: column;
 }
 
-#btn {
+.btn {
     padding: 15px 32px;
+    text-align: center;
     margin-bottom: 10px;
     font-size: 32px;
     background: rgb(224, 9, 9);
-    border-radius: 5px;
+    border-radius: 10px;
     border-color: black;
-    border-width: 3px;
+    border-width: 10px;
+    text-decoration: none;
+    color: black;
 }
 
-#btn:hover {
-    cursor: pointer;
+.btn:hover {
+    transition:transform 150ms;
+    transform: scale(1.03);
 }
 
 .btn[disabled]:hover {
     cursor: not-allowed;
+    transform: none;
 }
 
-.play:hover {
+#play:hover {
+    cursor: pointer;
+}
+
+#play:hover {
     color: white;
+    
 }
 
-.score:hover {
+#high-btn:hover {
     color: yellow;
+    
 }
 
 .play {
     color: black; 
 }
     
-/*.play {
-    animation:blinking 2.9s infinite;
-    }
-    @keyframes blinking{
-    47%{   color: #000; }
-    62%{   color: transparent;}
-    } */
-    
-    .play:hover {
+ .play:hover {
         color: white;
-    }
+ }
+
 .fa-crown {
     font-size: 25px;
     margin-left: 10px;
@@ -87,13 +91,81 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-
-    
 }
+
 .choice {
     font-size: 30px;
-    color: rgba(255, 255, 255, 0.74);
+    color: black;
+    display: flex;
+    margin: 10px;
+    padding: 5px;
+    background: rgb(224, 9, 9);
+    border-radius: 5px;
+    border-color: black;
+    border-width: 3px;
+}
+
+.choice:hover {
+    opacity: 0.5;
+}
+
+#game {
+    color: white;
+}
+
+.choice-container {
+    display: flex;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    width: 100%;
+    background: red;
+    font-size: 30px;
+    border-radius: 10px;
+    min-width: 500px
+}
+
+.choice-container:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transform: transform 100ms;
+}
+
+.choice-letter {
+    padding: 32px 40px ;
+}
+
+.choice-text {
+    padding: 32px;
+    
+}
+
+#display {
     display: flex;
     justify-content: space-between;
+}
+
+.display-num{
+    text-align: center;
+    padding-top: 25px;
+}
+
+#question {
+  font-size: 40px;
+  text-align: center;
+}
+
+#progressText {
+    padding-top: 25px;
+}
+
+.timer {
+    
+}
+
+.score-num {
+    font-size: 25px;
+    text-align: center;
+}
+.btn {
     
 }

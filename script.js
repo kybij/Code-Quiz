@@ -1,96 +1,85 @@
-var playEl = document.querySelector(".play");
-var timerEl = document.querySelector("#countdown")
-var scoreEl = document.querySelector(".score");
-var questionEl = document.getElementById("questions");
-var quizEl = document.getElementById("quiz");
-var choiceA = document.getElementById ("A");
-var choiceB = document.getElementById ("B");
-var choiceC = document.getElementById ("C");
-var progress =document.getElementById ("progress")
-var myQuestions = [{
-    questions: "Who created JavaScript?",
-         choiceA: "Brendan Eich",
-        choiceB: "Sheryl Sandberg",
-        choiceC: "Douglas Crockford",
-        correctAnswer: "a"
+var question = document.querySelector("#question")
+var choices = Array.from(document.querySelectorAll(".choice-text"))
+var score = document.querySelector("#score")
+var timerEl = document.querySelector(".timer")
+var btn1 = document.getElementById ("#btn1")
+var btn2 = document.getElementById ("#btn2")
+
+var currentQuestions = {}
+
+var score = 0
+var questionCounter = 0
+var availableQuestions = []
+var score_points = 100
+var max_questions = 5
+
+
+var questions = [
+    {
+        question: "Who created JavaScript?",
+        choice1: "Brendan Eich",
+        choice2: "Sheryl Sandberg",
+        choice3: "Douglas Crockford",
+        a: 1,
     },
-{
-    questions: "What year was HTML invented?",
-        choiceA: "1993",
-        choiceB: "1994",
-        choiceC: "1995",
-        correctAnswer: "a"
+    {
+        question: "What year was HTML invented?",
+        choice1: "1993",
+        choice2: "1994",
+        choice3: "1995",
+        a: 1,
     },
-{
-    questions: "What function converts a string and returns an integer?",
-        choiceA: "appendChild",
-        choiceB: "parseInt",
-        choiceC: "setAttribute",
-        correctAnswer: "b"
+    {
+        question: "What function converts a string and returns an integer?",
+        choice1: "appendChild",
+        choice2: "parseInt",
+        choice3: "setAttribute",
+        a: 2,
     },
-{
-    questions: "What is the Event Handler?",
-        choiceA: "The user behavior",
-        choiceB: "Observation of the event",
-        choiceC: "Response of the event",
-        correctAnswer: "c"
-},
-{
-    questions: "In the for loop what is the increment expression",
-        choiceA: "var i = 0",
-        choiceB: "i < 3",
-        choiceC: "i++",
-    correctAnswer: "c"
-}
+    {
+        question: "What is the Event Handler?",
+        choice1: "The user behavior",
+        choice2: "Observation of the event",
+        choice3: "Response of the event",
+        a: 3
+    },
+    {
+        question: "In the for loop what is the increment expression",
+        choice1: "var i = 0",
+        choice2: "i < 3",
+        choice3: "i++",
+        a: 3
+    }
 ];
 
- function countdown() {
-    var timeLeft = 20;
 
-    var timeInterval = setInterval(function () {
-        if (timeLeft > 0) {
-            timerEl.textContent = timeLeft + "seconds remaining";
-            timeLeft--;
-        } else if (timeLeft === 0) {
-            timerEl.textContent = timeLeft + "seconds remaining";
-            timeLeft--;
-        } else {
-            timerEl.textContent = "";
-            clearInterval(timeInterval);
-            return;
-        }
-    }, 1000)
-};
-
-var playGame = function () {
-    countdown()
-    questionEl.removeAttribute("class")
-    quizEl.setAttribute("class", "hide")
+playGame = () => {
+    //countdown()
+    questionCounter = 0
+    score = 0
+    availableQuestions = [...questions]
     getQuestions()
-};
-
-var getQuestions = function () {
-    var q = myQuestions[0];
-
-  questions.innerHTML = "<h3>" + q.questions + "</h3>";
-  choiceA.innerHTML = q.choiceA;
-  choiceB.innerHTML = q.choiceB;
-  choiceC.innerHTML = q.choiceC;
 
 };
 
-var getProgress = function () {
-    for(let qIndex = 0; qIndex <= questions.length -1; qIndex++ ){
-        progress.innerHTML += "div class= 'prog' id=" + qIndex +"></div>";
-    }
-}
+getQuestions = () => {
+    questionCounter++
+    var questionsIndex = Math.floor(Math.random() * availableQuestions.length)
+    currentQuestions = availableQuestions[questionsIndex]
+    question.innerText = currentQuestions.question
+
+    choices.forEach(choice => {
+        var number = choice.dataset["number"]
+        choice.innerText = currentQuestions["choice" + number]
+    })
+};
 
 
 
 
-playEl.onclick = playGame
-scoreEl.addEventListener("click", function () {
-    alert("button clicked");
-});
-playEl.addEventListener("click",playGame)
 
+
+
+
+
+playGame()
