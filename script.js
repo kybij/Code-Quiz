@@ -1,4 +1,4 @@
-var question = document.querySelector("#question")
+
 var choices = Array.from(document.querySelectorAll(".choice-text"))
 var score = document.querySelector("#score")
 var timerEl = document.querySelector(".timer")
@@ -128,15 +128,9 @@ getQuestions = () => {
            
         })
     }
-
-
-    // currentQuestions = availableQuestions[questionsIndex]
-    // question.innerText = currentQuestions.question
-
-    // choices.forEach(choice => {
-    //     var number = choice.dataset["number"]
-    //     choice.innerText = currentQuestions["choice" + number]
-    // })
+choices.forEach(choice => {
+    
+})
 };
 
 
