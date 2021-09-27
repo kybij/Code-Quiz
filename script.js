@@ -126,7 +126,7 @@ getQuestions = () => {
             }
             else {
                 clearInterval(timerId)
-                alert("Add Initials then few your highscore")
+                alert("Add Initials then view your highscore")
             }
 
         })
